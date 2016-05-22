@@ -2,20 +2,31 @@
 
 ## Download
 
-Download the `linux` image for [Atlas Server](https://www.mapbox.com/studio/atlas) and unzip it.
+Download the `linux` image of [Atlas Server](https://www.mapbox.com/studio/atlas) and unzip it into the `atlas-server` folder.
+
+## Source Data
+
+Download the source data and place them into `atlas-server-data/sources`.
 
 ## Set up Docker
 
 ```bash
+$ cd atlas-server
 $ docker build -t atlas .
 ```
 
 ## Run Atlas
 
+Execute these commands in the root directory `Atlas-Server`.
+
+**Option 1**
+
 ```bash
-$ docker run -d -p 2999:2999 --name atlas atlas
+$ docker-compose up
 ```
 
-## Attach Data
+**Option 2**
 
-Add a volume mount to your Docker run command `-v data:/opt/atlas-server-data/sources`.
+```bash
+$ docker run -d -p 2999:2999 -v $(pwd)atlas-server-data:/opt/atlas-server-data --name atlas atlas
+```
